@@ -9,7 +9,7 @@ Sistemas distribuídos que realizam diversas chamadas ao OpenSearch podem enfren
 ## 🛠️ **Tecnologias Utilizadas**
 - **Java 17**
 - **Spring Boot**
-- **OpenSearch 2.x**
+- **OpenSearch 1.x**
 - **Maven**
 - **ExecutorService** para concorrência
 - **Docker** (para monitoramento e execução do OpenSearch)
