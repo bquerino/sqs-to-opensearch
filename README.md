@@ -16,8 +16,8 @@ Sistemas distribuídos que realizam diversas chamadas ao OpenSearch podem enfren
 
 ## 📊 **Resultados Obtidos nos Testes**
 Executamos uma série de testes para medir o impacto do Connection Pooling, variando:
-1. **Carga de requisições**: 1.000, 5.000 e 10.000 operações.
-2. **Concorrência**: execução sequencial e paralela com múltiplas threads.
+1. **Carga de requisições**: 1.000, 5.000, 10.000 e 100.000 operações.
+2. **Concorrência**: execução paralela com múltiplas threads.
 3. **Uso de Connection Pooling**: comparação entre cenários com e sem pool.
 
 ### **Tabela de Resultados**
