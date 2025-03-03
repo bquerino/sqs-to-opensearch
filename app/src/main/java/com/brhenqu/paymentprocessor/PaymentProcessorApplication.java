@@ -30,7 +30,7 @@ public class PaymentProcessorApplication {
 			List<Future<String>> futures = new ArrayList<>();
 
 			long startTime = System.nanoTime();
-			for (int i = 0; i < 10000; i++) {
+			for (int i = 0; i < 100000; i++) {
 				final int id = i;
 				futures.add(executor.submit(() -> {
 					Payment payment = new Payment("1" + id, "2", 123.1, "R$", "Pending");

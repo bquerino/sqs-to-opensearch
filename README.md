@@ -22,20 +22,32 @@ Executamos uma série de testes para medir o impacto do Connection Pooling, vari
 
 ### **Tabela de Resultados**
 
-| Cenário                 | Carga  | Tipo             | Threads | Tempo Total (ms) | Tempo (s) | Tempo (min) |
-|-------------------------|--------|-----------------|---------|-----------------|-----------|------------|
-| **Sem Pool**           | 5.000  | Multithreading  | 10      | **15.092 ms**   | **15.09 s** | **0.25 min** |
-| **Com Pool**           | 5.000  | Multithreading  | 10      | **10.858 ms**   | **10.86 s** | **0.18 min** |
-| **Com Pool**           | 5.000  | Multithreading  | 20      | **10.061 ms**   | **10.06 s** | **0.17 min** |
-| **Sem Pool**           | 5.000  | Multithreading  | 20      | **21.742 ms**   | **21.74 s** | **0.36 min** |
-| **Sem Pool**           | 10.000 | Multithreading  | 20      | **40.288 ms**   | **40.29 s** | **0.67 min** |
-| **Com Pool**           | 10.000 | Multithreading  | 20      | **19.092 ms**   | **19.09 s** | **0.32 min** |
-
+| Cenário                 | Carga   | Tipo             | Threads | Tempo Total (ms) | Tempo (s)   | Tempo (min)  |
+|-------------------------|---------|-----------------|---------|-----------------|-------------|--------------|
+| **Sem Pool**           | 5.000   | Multithreading  | 10      | **15.092 ms**   | **15.09 s** | **0.25 min** |
+| **Com Pool**           | 5.000   | Multithreading  | 10      | **10.858 ms**   | **10.86 s** | **0.18 min** |
+| **Com Pool**           | 5.000   | Multithreading  | 20      | **10.061 ms**   | **10.06 s** | **0.17 min** |
+| **Sem Pool**           | 5.000   | Multithreading  | 20      | **21.742 ms**   | **21.74 s** | **0.36 min** |
+| **Sem Pool**           | 10.000  | Multithreading  | 20      | **40.288 ms**   | **40.29 s** | **0.67 min** |
+| **Com Pool**           | 10.000  | Multithreading  | 20      | **19.092 ms**   | **19.09 s** | **0.32 min** |
+| **Com Pool**           | 100.000 | Multithreading  | 20      | **178.745 ms**  | **178.7 s** | **2.98 min** |
+| **Sem Pool**           | 100.000 | Multithreading  | 20      | **347.785 ms**  | **347.8 s** | **5.80 min** |
 ### **📌 Análise dos Resultados**
 ✅ **O Connection Pool melhorou o tempo de execução em todos os casos com concorrência.** 🚀  
 ✅ **Para 10.000 requisições e 20 threads, o tempo reduziu em ~52%.**  
 ✅ **Com mais threads e alta carga, a vantagem do pooling se torna evidente.**  
-✅ **O ganho em execução sequencial foi pequeno, mas existiu.**  
+✅ **O ganho em execução sequencial foi pequeno, mas existiu.**
+
+#### **📊 Consumo de CPU sem Connection Pool**
+
+Os resultados abaixo foram plotados através do script `/scripts/monitor_cpu_opensearch.sh` usando o próprio Opensearch.
+
+![Sem Connection Pool](results/without-connection-pool.png)
+
+#### **📊 Consumo de CPU com Connection Pool**
+![Com Connection Pool](results/with-connection-pool.png)
+
+---
 
 ## ⚡ **Conclusão**
 O uso de Connection Pooling **traz benefícios significativos** para sistemas que realizam diversas chamadas ao OpenSearch de forma concorrente. No entanto, para cargas pequenas ou chamadas sequenciais, o impacto é menos expressivo. **Otimizações adicionais, como ajuste no tamanho do pool e tuning do OpenSearch, podem trazer ganhos adicionais.**
