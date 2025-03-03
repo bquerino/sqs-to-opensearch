@@ -35,8 +35,7 @@ Executamos uma série de testes para medir o impacto do Connection Pooling, vari
 ### **📌 Análise dos Resultados**
 ✅ **O Connection Pool melhorou o tempo de execução em todos os casos com concorrência.** 🚀  
 ✅ **Para 10.000 requisições e 20 threads, o tempo reduziu em ~52%.**  
-✅ **Com mais threads e alta carga, a vantagem do pooling se torna evidente.**  
-✅ **O ganho em execução sequencial foi pequeno, mas existiu.**
+✅ **Com mais threads e alta carga, a vantagem do pooling se torna evidente.**
 
 #### **📊 Consumo de CPU sem Connection Pool**
 
