@@ -24,8 +24,6 @@ Executamos uma série de testes para medir o impacto do Connection Pooling, vari
 
 | Cenário                 | Carga  | Tipo             | Threads | Tempo Total (ms) | Tempo (s) | Tempo (min) |
 |-------------------------|--------|-----------------|---------|-----------------|-----------|------------|
-| **Sem Pool**           | 1.000  | Sequencial      | 1       | **28.547 ms**   | **28.55 s** | **0.476 min** |
-| **Sem Pool**           | 10.000 | Sequencial      | 1       | **220.261 ms**  | **220.26 s** | **3.67 min** |
 | **Sem Pool**           | 5.000  | Multithreading  | 10      | **15.092 ms**   | **15.09 s** | **0.25 min** |
 | **Com Pool**           | 5.000  | Multithreading  | 10      | **10.858 ms**   | **10.86 s** | **0.18 min** |
 | **Com Pool**           | 5.000  | Multithreading  | 20      | **10.061 ms**   | **10.06 s** | **0.17 min** |
@@ -51,8 +49,8 @@ O uso de Connection Pooling **traz benefícios significativos** para sistemas qu
 ### 📌 **Passos para Executar**
 1. Clone o repositório:
    ```sh
-   git clone https://github.com/seu-usuario/payment-processor.git
-   cd payment-processor
+   git clone https://github.com/bquerino/sqs-to-opensearch.git
+   cd app
    ```
 2. Suba o OpenSearch com Docker:
    ```sh
@@ -63,7 +61,7 @@ O uso de Connection Pooling **traz benefícios significativos** para sistemas qu
    mvn clean install
    mvn spring-boot:run
    ```
-
+   
 ## 📌 **Monitoramento**
 ### **Verificar uso de conexões no OpenSearch**
 ```sh
@@ -75,8 +73,14 @@ curl -X GET "http://localhost:9200/_nodes/stats/http?pretty"
 curl -X GET "http://localhost:9200/_cluster/pending_tasks?pretty"
 ```
 
+### **Alternar a forma de execução - Habilitar e desabilitar o connection pool**
+
+A aplicação usa o parâmetro no arquivo `application.properties` para alternar entre habilitar e desabilitar o connection pool através da propriedade:
+
+```properties
+opensearch.usePool=false
+```
+
 ## 📜 **Licença**
 Este projeto está licenciado sob a **MIT License** - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
-🚀 **Feito com ❤️ para entender e otimizar sistemas distribuídos!**
 
